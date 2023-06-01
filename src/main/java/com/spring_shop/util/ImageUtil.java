@@ -9,7 +9,6 @@ import java.io.IOException;
 @UtilityClass
 public class ImageUtil {
 
-
     public static String uploadImage(MultipartFile multipartFile, String path){
         String fileName;
         try {
@@ -24,4 +23,5 @@ public class ImageUtil {
         }
         return null;
     }
+
 }

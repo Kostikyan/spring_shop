@@ -1,6 +1,5 @@
 package com.spring_shop.config;
 
-import com.spring_shop.security.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +22,15 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        String admin = "ADMIN";
         httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/").permitAll()
-                .requestMatchers("/user/admin").hasAuthority("ADMIN")
-                .requestMatchers("/add/category/page").hasAuthority("ADMIN")
-                .requestMatchers("/add/product/page").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/add/product").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/add/category").hasAuthority("ADMIN")
+                .requestMatchers("/user/admin").hasAuthority(admin)
+                .requestMatchers("/add/category/page").hasAuthority(admin)
+                .requestMatchers("/add/product/page").hasAuthority(admin)
+                .requestMatchers(HttpMethod.POST, "/add/product").hasAuthority(admin)
+                .requestMatchers(HttpMethod.POST, "/add/category").hasAuthority(admin)
                 .requestMatchers("/user/admin").hasAuthority("ADMIN")
                 .requestMatchers("/assets/**").permitAll()
                 .requestMatchers("/css/**").permitAll()

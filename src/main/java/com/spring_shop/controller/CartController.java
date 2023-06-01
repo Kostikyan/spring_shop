@@ -1,7 +1,6 @@
 package com.spring_shop.controller;
 
 import com.spring_shop.entity.Cart;
-import com.spring_shop.entity.Product;
 import com.spring_shop.security.CurrentUser;
 import com.spring_shop.service.impl.CartServiceImpl;
 import lombok.RequiredArgsConstructor;
