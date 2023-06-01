@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<a href="/cart">go to cart</a> <br>
+<a href="/">go to products</a>
+<br>
+<p>Orders</p>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Category</th>
+        <th>DateTime</th>
+    </tr>
+</table>
+<div th:each="order : ${orders}" style="border: 2px darkslategray dotted; margin-bottom: 10px;">
+    <div th:each="product : ${order.getProducts()}">
+        <span th:text="${product.getId()}"></span> ,
+        <span th:text="${product.getTitle()}"></span> ,
+        <span th:text="${product.getPrice()}"></span> ,
+        <span th:text="${product.getDescription()}"></span> ,
+        <span><img th:src="@{/getImage(imageName=${product.imgPath})}"></span> ,
+        <span th:text="${product.getCategory().getName()}"></span> ,
+        <span th:text="${order.getDateTime()}"></span>
+        <a href="/"></a>
+        <br>
+    </div>
+</div>
+</body>
+</html>

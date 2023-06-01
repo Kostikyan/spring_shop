@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<a href="/order">go to order</a> <br>
+<a href="/">go to products</a>
+<br>
+<p>Products</p>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Category</th>
+    </tr>
+</table>
+<div th:each="cart : ${carts}" style="border: 2px darkslategray dotted; margin-bottom: 10px;">
+    <div th:each="product : ${cart.getProducts()}">
+        <span th:text="${product.getId()}"></span> ,
+        <span th:text="${product.getTitle()}"></span> ,
+        <span th:text="${product.getPrice()}"></span> ,
+        <span th:text="${product.getDescription()}"></span> ,
+        <span><img th:src="@{/getImage(imageName=${product.imgPath})}"></span> ,
+        <span th:text="${product.getCategory().getName()}"></span>
+        <a href="/"></a>
+    </div>
+</div>
+<br>
+<label for="price">Price: </label><strong id="price" th:text="${price}" style="color: lime;"></strong>
+    <form action="/order/add-to-order" method="post">
+        <button type="submit">Add all to order</button>
+    </form>
+</body>
+</html>
